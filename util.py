@@ -1,4 +1,5 @@
 import urllib2
+import scrapy
 
 def pretty(d, indent=0):
     for key, value in d.iteritems():
@@ -26,3 +27,5 @@ def construct_map(urls):
         
     pretty(url_dict)
     return url_dict
+
+construct_map(scrapy.scrape_all_city_and_urls_diesel())
