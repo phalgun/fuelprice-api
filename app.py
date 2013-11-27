@@ -1,13 +1,10 @@
 #!flask/bin/python
 from flask import Flask, jsonify
 from flask.helpers import make_response
-from scrapy import get_latest_petrol_price
+from scrapy import get_latest_petrol_price, get_all_petrol_prices
 from urls import get_petrol_url
 
 app = Flask(__name__)
-
-def all_prices(self):
-    pass
 
 def init(self):
     pass
@@ -15,7 +12,7 @@ def init(self):
 @app.route('/fuelprice/v1.0/petrol/', methods=['GET'])
 def get_petrol_prices_all():
     init()
-    return all_prices()
+    return get_all_petrol_prices()
 
 
 @app.route('/fuelprice/v1.0/petrol/<string:city_name>', methods=['GET'])
