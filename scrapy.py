@@ -1,9 +1,9 @@
 import requests
 import lxml.html
 import re
-from urls import get_petrol_urls
+import urls
 
-def get_latest_petrol_price(url):
+def scrape_latest_petrol_price(url):
     r = requests.get(url)
     data = r.text
     
@@ -12,10 +12,25 @@ def get_latest_petrol_price(url):
     stripped_string = str(list(complete_string)[0].strip())
     
     matchObj = re.search(r'Price = (.*)', stripped_string, re.M | re.I)
+    
     return matchObj.group(1)
  
 
-def get_all_petrol_prices():
-    url_dict = get_petrol_urls()
+def scrape_all_petrol_prices():
+    url_dict = urls.petrol_urls()
     petrol_prices = {}
+    
+    for city in url_dict:
+        petrol_prices[(city).title()] = scrape_latest_petrol_price(url_dict[city])
+    
+    return petrol_prices
+
+def scrape_all_city_and_urls():
+    r = requests.get('http://www.mypetrolprice.com/petrol-price-in-india.aspx')
+    data = r.text
+    
+    tree = lxml.html.fromstring(data)
+    urls = tree.xpath('//td/ul[contains(@id, "BC_blPerolPrices")]/li/a/@href')
+
+    return urls
     

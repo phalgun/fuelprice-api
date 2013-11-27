@@ -1,30 +1,26 @@
-#!flask/bin/python
 from flask import Flask, jsonify
 from flask.helpers import make_response
-from scrapy import get_latest_petrol_price, get_all_petrol_prices
-from urls import get_petrol_url
+
+import urls
+import scrapy
 
 app = Flask(__name__)
 
-def init(self):
-    pass
-
 @app.route('/fuelprice/v1.0/petrol/', methods=['GET'])
-def get_petrol_prices_all():
-    init()
-    return get_all_petrol_prices()
+def petrol_prices_all():
+    all_petrol_prices = scrapy.scrape_all_petrol_prices()
+    return make_response(jsonify(all_petrol_prices))
 
 
 @app.route('/fuelprice/v1.0/petrol/<string:city_name>', methods=['GET'])
-def get_petrol_price(city_name):
-    init()
-    url = get_petrol_url(city_name)
-    price = get_latest_petrol_price(url)
-    return make_response(jsonify({ 'city' : city_name.title(), 'price' : price}))
+def petrol_price(city_name):
+    url = urls.petrol_url(city_name)
+    price = scrapy.scrape_latest_petrol_price(url)
+    return make_response(jsonify({city_name.title() : price}))
     
 @app.errorhandler(404)
 def not_found(error):
-    return make_response(jsonify({ 'error': 'Not found'}))
+    return make_response(jsonify({'error': 'Not found'}))
 
 @app.route('/')
 def index():

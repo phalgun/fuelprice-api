@@ -2,6 +2,8 @@ city_urls_petrol = {'gurgaon':
     'http://www.mypetrolprice.com/40/Petrol-price-in-Gurgaon',
 'hyderabad':
     'http://www.mypetrolprice.com/8/Petrol-price-in-Hyderabad',
+'port blair':
+    'http://www.mypetrolprice.com/29/Petrol-price-in-Port%20Blair',
 'agartala':
     'http://www.mypetrolprice.com/9/Petrol-price-in-Agartala',
 'panjim':
@@ -12,8 +14,8 @@ city_urls_petrol = {'gurgaon':
     'http://www.mypetrolprice.com/36/Petrol-price-in-Gandhinagar',
 'pondicherry':
     'http://www.mypetrolprice.com/28/Petrol-price-in-Pondicherry',
-'itanagar':
-    'http://www.mypetrolprice.com/20/Petrol-price-in-Itanagar',
+'ranchi':
+    'http://www.mypetrolprice.com/31/Petrol-price-in-Ranchi',
 'mumbai':
     'http://www.mypetrolprice.com/3/Petrol-price-in-Mumbai',
 'mysore':
@@ -32,8 +34,8 @@ city_urls_petrol = {'gurgaon':
     'http://www.mypetrolprice.com/6/Petrol-price-in-Bengaluru',
 'patna':
     'http://www.mypetrolprice.com/27/Petrol-price-in-Patna',
-'navi%20mumbai':
-    'http://www.mypetrolprice.com/42/Petrol-price-in-Navi%20Mumbai',
+'itanagar':
+    'http://www.mypetrolprice.com/20/Petrol-price-in-Itanagar',
 'kolkata':
     'http://www.mypetrolprice.com/4/Petrol-price-in-Kolkata',
 'jalandhar':
@@ -66,14 +68,12 @@ city_urls_petrol = {'gurgaon':
     'http://www.mypetrolprice.com/34/Petrol-price-in-Srinagar',
 'ahmedabad':
     'http://www.mypetrolprice.com/10/Petrol-price-in-Ahmedabad',
-'port%20blair':
-    'http://www.mypetrolprice.com/29/Petrol-price-in-Port%20Blair',
-'ranchi':
-    'http://www.mypetrolprice.com/31/Petrol-price-in-Ranchi',
 'pune':
     'http://www.mypetrolprice.com/7/Petrol-price-in-Pune',
 'lucknow':
     'http://www.mypetrolprice.com/25/Petrol-price-in-Lucknow',
+'navi mumbai':
+    'http://www.mypetrolprice.com/42/Petrol-price-in-Navi%20Mumbai',
 'kohima':
     'http://www.mypetrolprice.com/24/Petrol-price-in-Kohima',
 'jaipur':
@@ -87,11 +87,11 @@ city_urls_petrol = {'gurgaon':
 'imphal':
     'http://www.mypetrolprice.com/19/Petrol-price-in-Imphal',
 'kolhapur':
-    'http://www.mypetrolprice.com/78/Petrol-price-in-Kolhapur'
+    'http://www.mypetrolprice.com/78/Petrol-price-in-Kolhapur',
 }
 
-def get_petrol_urls():
+def petrol_urls():
     return city_urls_petrol
 
-def get_petrol_url(city_name):
+def petrol_url(city_name):
     return city_urls_petrol[city_name.lower()]

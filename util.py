@@ -1,5 +1,4 @@
-import requests
-import lxml.html
+import urllib2
 
 def pretty(d, indent=0):
     for key, value in d.iteritems():
@@ -10,22 +9,20 @@ def pretty(d, indent=0):
             print '\t' * (indent + 1) + '\'' + str(value) + '\','
 
 
+'''
+    Method to remove URL characters like %20 (space) in the city name 
+'''
+def cleanse(city_name):
+    return urllib2.unquote(city_name)
+
+
 def construct_map(urls):
     domain = 'http://www.mypetrolprice.com/'
     url_dict = {}
     for url in urls:
-        url_dict[(url.split('-')[-1]).lower()] = domain + url
+        city_name = (url.split('-')[-1]).lower()
+        city_name = cleanse(city_name) 
+        url_dict[city_name] = domain + url
         
     pretty(url_dict)
     return url_dict
-
-def get_all_city_and_urls():
-    r = requests.get('http://www.mypetrolprice.com/petrol-price-in-india.aspx')
-    data = r.text
-    
-    tree = lxml.html.fromstring(data)
-    urls = tree.xpath('//td/ul[contains(@id, "BC_blPerolPrices")]/li/a/@href')
-#     for url in urls:
-#         print url
-#     
-    construct_map(urls)
