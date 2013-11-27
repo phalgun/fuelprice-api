@@ -14,3 +14,17 @@ Start the server with :
 [Python]: http://python.org/
 [Flask]: http://flask.pocoo.org/
 [lxml]: http://lxml.de/
+
+REST webservice calls
+---------------------
+
+- /fuelprice/v1.0/diesel - returns a JSON with diesel prices of all the major towns & cities in India. 
+- /fuelprice/v1.0/diesel/cityname - returns a JSON with the diesel price in cityname. 
+- /fuelprice/v1.0/petrol/ - returns a JSON with petrol prices of all the major towns & cities in India. 
+- /fuelprice/v1.0/petrol/cityname - returns a JSON with the petrol price in cityname. 
+- /fuelprice/v1.0/city - returns a JSON with a list of all the supported cities & towns. 
+
+Do holler if you need help in understanding the code or using it. 
+
+--
+I <3 scraping. 
