@@ -27,7 +27,11 @@ def petrol_price(city_name):
     url = urls.petrol_url(city_name.lower())
     price = scrapy.scrape_latest_price(url)
     return make_response(jsonify({city_name.title() : price}))
-    
+
+@app.route('/fuelprice/v1.0/city', methods=['GET'])
+def all_cities():
+    return make_response(jsonify({'city' : urls.city_urls_petrol.keys()}))
+
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}))
